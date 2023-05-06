@@ -26,16 +26,16 @@ export const Skills = ({ skills, attributes, onIncrement, onDecrement }) => {
               </div>
               <div>
                 <button
-                  className="mr-1 w-6 h-6 rounded-full bg-white text-black"
-                  onClick={() => onIncrement(skill.name)}
-                >
-                  +
-                </button>
-                <button
                   onClick={() => onDecrement(skill.name)}
                   className="w-6 h-6 rounded-full bg-white text-black"
                 >
                   -
+                </button>
+                <button
+                  className="mr-1 w-6 h-6 rounded-full bg-white text-black"
+                  onClick={() => onIncrement(skill.name)}
+                >
+                  +
                 </button>
               </div>
             </div>
