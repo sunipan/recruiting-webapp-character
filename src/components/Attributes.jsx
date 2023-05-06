@@ -1,7 +1,7 @@
 import { ATTRIBUTE_LIST } from "../consts";
 import { calculateModifier } from "../utils/utils";
 
-export const Attributes = ({ attributes, onIncrement, onDecrement }) => {
+export const Attributes = ({ index, attributes, onIncrement, onDecrement }) => {
   return (
     <div className="flex flex-col">
       <div className="text-center font-bold text-xl mb-2">Attributes</div>
@@ -15,13 +15,13 @@ export const Attributes = ({ attributes, onIncrement, onDecrement }) => {
             <div className="flex justify-center items-center">
               <button
                 className="text-center w-6 h-6 rounded-full mr-2 bg-white text-black"
-                onClick={() => onDecrement(attribute)}
+                onClick={() => onDecrement(attribute, index)}
               >
                 -
               </button>
               <button
                 className="text-center w-6 h-6 bg-white text-black rounded-full"
-                onClick={() => onIncrement(attribute)}
+                onClick={() => onIncrement(attribute, index)}
               >
                 +
               </button>

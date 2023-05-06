@@ -1,7 +1,13 @@
 import { SKILL_LIST } from "../consts";
 import { calculateModifier } from "../utils/utils";
 
-export const Skills = ({ skills, attributes, onIncrement, onDecrement }) => {
+export const Skills = ({
+  index,
+  skills,
+  attributes,
+  onIncrement,
+  onDecrement,
+}) => {
   return (
     <div className="flex flex-col col-span-2">
       <div className="text-center font-bold text-xl mb-2">Skills</div>
@@ -26,14 +32,14 @@ export const Skills = ({ skills, attributes, onIncrement, onDecrement }) => {
               </div>
               <div>
                 <button
-                  onClick={() => onDecrement(skill.name)}
-                  className="w-6 h-6 rounded-full bg-white text-black"
+                  onClick={() => onDecrement(skill.name, index)}
+                  className="mr-2 w-6 h-6 rounded-full bg-white text-black"
                 >
                   -
                 </button>
                 <button
                   className="mr-1 w-6 h-6 rounded-full bg-white text-black"
-                  onClick={() => onIncrement(skill.name)}
+                  onClick={() => onIncrement(skill.name, index)}
                 >
                   +
                 </button>
