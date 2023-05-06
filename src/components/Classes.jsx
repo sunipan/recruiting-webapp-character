@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 export const Classes = ({ classes, attributes }) => {
+  const [showRequirements, setShowRequirements] = useState(null);
+
   const meetsRequirements = (classKey) => {
     // Compare key lengths
     const keys1 = Object.keys(attributes);
@@ -19,6 +23,7 @@ export const Classes = ({ classes, attributes }) => {
           return (
             <button
               key={classKey}
+              onClick={() => setShowRequirements(classKey)}
               className={`text-center ${
                 meetsRequirements(classKey) && "font-bold text-green-300"
               }`}
@@ -27,6 +32,23 @@ export const Classes = ({ classes, attributes }) => {
             </button>
           );
         })}
+        {showRequirements && (
+          <>
+            <div className="text-center mt-5 border border-white rounded-lg">
+              {Object.entries(classes[showRequirements]).map(([key, value]) => (
+                <div key={key}>
+                  {key}: {value}
+                </div>
+              ))}
+            </div>
+            <button
+              className="bg-white rounded-lg text-black mt-5"
+              onClick={() => setShowRequirements(null)}
+            >
+              Close
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
