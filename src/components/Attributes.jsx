@@ -1,4 +1,5 @@
 import { ATTRIBUTE_LIST } from "../consts";
+import { calculateModifier } from "../utils/utils";
 
 export const Attributes = ({ attributes, onIncrement, onDecrement }) => {
   return (
@@ -8,7 +9,8 @@ export const Attributes = ({ attributes, onIncrement, onDecrement }) => {
         {ATTRIBUTE_LIST.map((attribute) => (
           <div key={attribute} className="grid grid-cols-3">
             <div className="text-center col-span-2">
-              {attribute}: {attributes[attribute]}
+              {attribute}: {attributes[attribute]} <br></br>(Modifier:{" "}
+              {calculateModifier(attributes, attribute)})
             </div>
             <div className="flex justify-center items-center">
               <button
