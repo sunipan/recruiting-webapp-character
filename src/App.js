@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import { ATTRIBUTE_LIST, CLASS_LIST, SKILL_LIST } from "./consts.js";
 import { Attributes } from "./components/Attributes";
+import { Classes } from "./components/Classes";
 
 function App() {
   const [attributes, setAttributes] = useState(
@@ -31,6 +32,7 @@ function App() {
             onIncrement={handleAttributeIncrement}
             onDecrement={handleAttributeDecrement}
           />
+          <Classes classes={CLASS_LIST} attributes={attributes} />
         </div>
       </section>
     </div>
