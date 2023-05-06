@@ -58,19 +58,30 @@ function App() {
   };
 
   const handleAttributeIncrement = (attribute) => {
-    setAttributes({ ...attributes, [attribute]: attributes[attribute] + 1 });
+    // Could probably use useMemo on this calculation, but right now not necessary
+    const totalAttributePoints = Object.values(attributes).reduce(
+      (acc, val) => acc + val,
+      0
+    );
+    if (totalAttributePoints >= 70) return;
+    setAttributes((prev) => ({
+      ...prev,
+      [attribute]: prev[attribute] + 1,
+    }));
   };
 
   const handleAttributeDecrement = (attribute) => {
-    setAttributes({
-      ...attributes,
-      [attribute]:
-        attributes[attribute] - 1 < 0 ? 0 : attributes[attribute] - 1,
-    });
+    setAttributes((prev) => ({
+      ...prev,
+      [attribute]: prev[attribute] - 1 < 0 ? 0 : prev[attribute] - 1,
+    }));
   };
 
   const handleSkillIncrement = (skill) => {
-    const totalPoints = Object.values(skills).reduce((a, b) => a + b, 0);
+    const totalPoints = Object.values(skills).reduce(
+      (acc, val) => acc + val,
+      0
+    );
     setSkills((prev) => {
       if (totalPoints >= 10 + 4 * calculateModifier(attributes, "Intelligence"))
         return prev;
